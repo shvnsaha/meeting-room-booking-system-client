@@ -8,9 +8,9 @@ const MainLayout = () => {
   
   return (
     <div className="max-w-[2520px]  mx-auto bg-gray-100">
-      <div className="mb-16">
+      {/* <div className="mb-16"> */}
         <Navbar></Navbar>
-      </div>
+      {/* </div> */}
 
       <div className="min-h-[calc(100vh-68px)]">
         <Outlet></Outlet>

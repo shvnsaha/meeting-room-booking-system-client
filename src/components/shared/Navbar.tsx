@@ -1,6 +1,8 @@
-import  { useEffect, useState } from 'react';
+import avatarImg from '../../assets/placeholder.jpg'
 import logo from '../../assets/logo.jpg'
 import { Link, NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hook';
+import { useCurrentUser } from '../../redux/features/auth/authSlice';
 
 
 
@@ -12,27 +14,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
 
    
-    const [sticky, setSticky] = useState(false);
-    
-
-    // hanlde scroll function
-    useEffect(() => {
-        const handleScroll = () => {
-            const offset = window.scrollY;
-            if (offset > 0)
-                setSticky(true)
-            else
-                setSticky(false)
-        }
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.addEventListener("scroll", handleScroll);
-        }
-    }, [])
-
-
+   const user = useAppSelector(useCurrentUser)
 
     const navItems = <>
         <li className='font-bold'><NavLink to={'/'}>Home</NavLink></li>
@@ -43,8 +25,8 @@ const Navbar = () => {
     </>
 
     return (
-        <header className='fixed top-0 left-0 right-0'>
-            <div className={`navbar lg:px-10 ${sticky ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out" : ""}`}>
+       
+            <div className={`navbar lg:px-10`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -75,14 +57,14 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                {/* <img alt="Tailwind CSS Navbar component" src={user && user.photoURL ? user.photoURL : avatarImg} /> */}
+                                <img alt="Tailwind CSS Navbar component" src={avatarImg} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-                            {/* {user  ? <> {userData?.role === 'admin'? <li><Link to={'/dashboard'}>Dashboard</Link></li> : <li><Link to={'/dashboard/profile'}>Profile</Link></li>}
+                            {user  ? <> {user?.role === 'admin'? <li><Link to={'/dashboard'}>Dashboard</Link></li> : <li><Link to={'/dashboard/profile'}>Profile</Link></li>}
                                 <li><button >Logout</button></li>
-                            </> : <li><Link to={'/login'}>Login</Link></li> } */}
+                            </> : <li><Link to={'/login'}>Login</Link></li> }
                         </ul>
                     </div>
 
@@ -91,7 +73,7 @@ const Navbar = () => {
 
                 </div>
             </div>
-        </header>
+       
     );
 };
 
