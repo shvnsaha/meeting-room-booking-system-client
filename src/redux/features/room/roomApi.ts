@@ -15,8 +15,17 @@ const roomApi = baseApi.injectEndpoints({
               method: "GET",
             }),   
           }),
+
+          addRoom: builder.mutation({
+            query: (payload) => ({
+              url: "/rooms",
+              method: "POST",
+              body: payload,
+            }),
+            invalidatesTags:['room']
+          }),
         })
     })
 
 
-    export const {useGetRoomsQuery,useGetSingleProductQuery} = roomApi
+    export const {useGetRoomsQuery,useGetSingleProductQuery,useAddRoomMutation} = roomApi
