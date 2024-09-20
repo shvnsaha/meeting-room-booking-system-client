@@ -24,8 +24,16 @@ const roomApi = baseApi.injectEndpoints({
             }),
             invalidatesTags:['room']
           }),
+
+          deleteRoom: builder.mutation({
+            query: (id) => ({
+              url: `/rooms/${id}`,
+              method: "DELETE",
+            }),
+            invalidatesTags: ['room'],
+          }),
         })
     })
 
 
-    export const {useGetRoomsQuery,useGetSingleProductQuery,useAddRoomMutation} = roomApi
+    export const {useGetRoomsQuery,useGetSingleProductQuery,useAddRoomMutation,useDeleteRoomMutation} = roomApi
