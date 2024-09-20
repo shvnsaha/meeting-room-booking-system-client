@@ -3,11 +3,11 @@ import { Fragment } from 'react'
 import { TbFidgetSpinner } from 'react-icons/tb';
 import Creatable from 'react-select/creatable'
 
-const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
+const UpdateRoomModal = ({ isOpen2, closeModal, handleUpdateRoom, loading, options,
     selectedOptions,
-    setSelectedOptions }: any) => {
+    setSelectedOptions,room }: any) => {
     return (
-        <Transition appear show={isOpen} as={Fragment}>
+        <Transition appear show={isOpen2} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={closeModal}>
                 <Transition.Child
                     as={Fragment}
@@ -37,10 +37,10 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                     as="h3"
                                     className="text-lg font-medium text-center leading-6 text-gray-900 mb-6"
                                 >
-                                    Add Room
+                                    Update Room
                                 </Dialog.Title>
                                 <div className="mt-10">
-                                    <form onSubmit={handleAddRoom}>
+                                    <form onSubmit={handleUpdateRoom}>
                                         <div className="space-y-6">
                                             <div className="space-y-1 text-sm">
                                                 <input
@@ -48,7 +48,8 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                     name="room_name"
                                                     id="name"
                                                     type="text"
-                                                    placeholder="Name"
+                                                    placeholder='Room Name'
+                                                   defaultValue={room?.name}
                                                     required
                                                 />
                                             </div>
@@ -62,6 +63,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                         id="roomNo"
                                                         type="number"
                                                         placeholder="Room Number"
+                                                        defaultValue={room?.roomNo}
                                                         required
                                                     />
                                                 </div>
@@ -73,6 +75,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                         id="floorNo"
                                                         type="number"
                                                         placeholder="Floor Nunber"
+                                                        defaultValue={room?.floorNo}
                                                         required
                                                     />
                                                 </div>
@@ -85,6 +88,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                     id="capacity"
                                                     type="number"
                                                     placeholder="Capacity"
+                                                    defaultValue={room?.capacity}
                                                     required
                                                 />
                                             </div>
@@ -96,6 +100,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                     id="pricePerSlot"
                                                     type="number"
                                                     placeholder="Price Per Slot"
+                                                    defaultValue={room?.pricePerSlot}
                                                     required
                                                 />
                                             </div>
@@ -107,6 +112,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                     id="image"
                                                     type="text"
                                                     placeholder="Image Url"
+                                                    defaultValue={room?.image}
                                                     required
                                                 />
                                             </div>
@@ -174,4 +180,4 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
     );
 };
 
-export default AddRoomModal;
+export default UpdateRoomModal;

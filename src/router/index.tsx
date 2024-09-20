@@ -8,6 +8,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import Signup from "../pages/Signup";
 import DashboardLayout from "../layout/DashboardLayout";
 import Room from "../pages/Dashboard/Room";
+import Slot from "../pages/Dashboard/Slot";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: 'room-management',
                 element: <Room/>
+            },
+            {
+                path: 'slot-management',
+                element: <Slot/>
             },
         ]
     },

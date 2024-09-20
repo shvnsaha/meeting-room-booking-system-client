@@ -1,20 +1,24 @@
 import { Helmet } from "react-helmet-async";
-import { useAddRoomMutation, useDeleteRoomMutation, useGetRoomsQuery } from "../../redux/features/room/roomApi";
-import RoomDataRow from "../../components/Dashboard/RoomDataRow";
-import {  FormEventHandler, useState } from "react";
+import { useAddRoomMutation, useDeleteRoomMutation, useGetRoomsQuery, useUpdateRoomMutation } from "../../redux/features/room/roomApi";
+import {   useState } from "react";
 import AddRoomModal from "../../components/Dashboard/AddRoomModal";
 import { IoAddCircleSharp } from "react-icons/io5";
 import toast from "react-hot-toast";
 import { TRoom } from "../../types/inde";
 import { MdDeleteOutline, MdSystemUpdateAlt } from "react-icons/md";
 import Swal from "sweetalert2";
+import UpdateRoomModal from "../../components/Dashboard/UpdateRoomModal";
 
 const Room = () => {
 
     const { data, isLoading } = useGetRoomsQuery(undefined)
     const [addRoom] = useAddRoomMutation()
     const [deleteRoom] = useDeleteRoomMutation()
+    const [updateRoom] = useUpdateRoomMutation()
     const [loading, setLoading] = useState(false)
+    const [room,setRoom] = useState<TRoom | null>(null)
+    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen2, setIsOpen2] = useState(false)
 
     const [selectedOptions, setSelectedOptions] = useState([])
 
@@ -37,16 +41,17 @@ const Room = () => {
         <p>Loading</p>
     }
 
-    const [isOpen, setIsOpen] = useState(false)
+   
 
     function closeModal() {
         setIsOpen(false)
+        setIsOpen2(false)
     }
 
-    const handleAddRoom = async (e:any) => {
+    const handleAddRoom = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const form = e.target
-        const name = form.name.value;
+        const form = e.currentTarget;
+        const name = form.room_name.value;
         const image = form.image.value
         const roomNo = parseInt(form.roomNo.value)
         const floorNo = parseInt(form.floorNo.value)
@@ -98,6 +103,48 @@ const Room = () => {
           }
         });
       };
+
+      const openModal = (item: TRoom) => {
+        setIsOpen2(true);
+        setRoom(item);
+      };
+
+      const handleUpdateRoom = async (e:React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const name = form.room_name.value;
+        const image = form.image.value
+        const roomNo = parseInt(form.roomNo.value)
+        const floorNo = parseInt(form.floorNo.value)
+        const capacity = parseInt(form.capacity.value)
+        const pricePerSlot = parseInt(form.pricePerSlot.value)
+        const amenities = selectedValues
+        const amenitiesObj = selectedOptions
+        const roomData = {
+            name,image,roomNo,floorNo,capacity,pricePerSlot,amenities,amenitiesObj
+        }
+
+
+        console.log(roomData);
+  
+
+        try {
+            const id = room?._id;
+            setLoading(true);
+            const res = await updateRoom( {id, roomData} ).unwrap();
+            console.log(res);
+            if (res?.success) {
+              toast.success(res?.message);
+            }
+          } catch (err: any) {
+            toast.error(err);
+          } finally {
+            setLoading(false);
+            setIsOpen(false);
+          }
+
+    }
+
 
     return (
         <div className='container mx-auto px-4 sm:px-8'>
@@ -206,8 +253,8 @@ const Room = () => {
                                         className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
                                     >
                                         <div className="flex justify-evenly">
-                                            <button title="Update" ><MdSystemUpdateAlt /></button>
-                                            <button title="Delete" onClick={()=>handleDelete(item._id)}><MdDeleteOutline /></button>
+                                            <button  onClick={() => openModal(item)} title="Update" ><MdSystemUpdateAlt /></button>
+                                            <button  title="Delete" onClick={()=>handleDelete(item._id)}><MdDeleteOutline /></button>
                                         </div>
                                     </td>
                                 </tr>)
@@ -216,13 +263,26 @@ const Room = () => {
                         </table>
                     </div>
                 </div>
-                <AddRoomModal
+               {
+                 <AddRoomModal
+                 closeModal={closeModal}
+                 isOpen={isOpen} handleAddRoom={handleAddRoom} loading={loading}
+                 options={options}
+                 selectedOptions={selectedOptions}
+                 setSelectedOptions={setSelectedOptions}
+             ></AddRoomModal>
+               }
+
+                {
+                    <UpdateRoomModal
                     closeModal={closeModal}
-                    isOpen={isOpen} handleAddRoom={handleAddRoom} loading={loading}
+                    isOpen2={isOpen2} handleUpdateRoom={handleUpdateRoom} loading={loading}
                     options={options}
                     selectedOptions={selectedOptions}
-                    setSelectedOptions={setSelectedOptions}
-                ></AddRoomModal>
+                    setSelectedOptions={setSelectedOptions}  
+                    room={room}
+                ></UpdateRoomModal>
+                }
             </div>
         </div>
     );
