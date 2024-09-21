@@ -1,16 +1,22 @@
 
 import { TbFidgetSpinner } from "react-icons/tb";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hook";
 import { verifyToken } from "../types/verifyToken";
 import { setUser, TUser } from "../redux/features/auth/authSlice";
+import { useState } from "react";
 
 
 const Login = () => {
+
+    const location = useLocation();
+
+    console.log(location);
     const [login] = useLoginMutation()
     const dispatch = useAppDispatch()
     const navigate = useNavigate();
+    const [loader,setLoader] = useState(false)
 
 
     const handleSubmit =  async(event:any) =>{
@@ -30,7 +36,7 @@ const Login = () => {
            const user = verifyToken(res.token) as TUser
            dispatch(setUser({user:user,token: res.token,userData: res.data}))
         
-          navigate(`/`)
+          navigate(location?.state || "/")
            } catch (error:any) {
             // toas.error(error.message,{id: toastId})
             console.log(error);
@@ -89,12 +95,12 @@ const Login = () => {
                                 type="submit"
                                 className="bg-rose-500 w-full rounded-md py-3 text-white"
                             >
-                                {/* {loader ? (
+                                {loader ? (
                                     <TbFidgetSpinner className="animate-spin m-auto" />
                                 ) : (
                                     "Continue"
-                                )} */}
-                                Continue
+                                )}
+                             
                             </button>
                         </div>
                     </form>

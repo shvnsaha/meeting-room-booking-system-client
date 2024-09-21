@@ -65,5 +65,5 @@ export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: baseQuery, 
   endpoints: () => ({}),
-  tagTypes:['room','slot']
+  tagTypes:['room','slot','order']
 });

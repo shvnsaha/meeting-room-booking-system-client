@@ -9,6 +9,13 @@ const slotApi = baseApi.injectEndpoints({
               }),
               providesTags:['slot']
         }),
+        getAvailableSlots: builder.query({
+            query: (params) => ({
+                method: 'GET',
+                url: `/slots/availability?${params}`,
+              }),
+              providesTags:['slot']
+        }),
 
         addSlot: builder.mutation({
             query: (payload) => ({
@@ -45,4 +52,4 @@ const slotApi = baseApi.injectEndpoints({
     })
 
 
-    export const {useGetSlotsQuery,useAddSlotMutation,useDeleteSlotMutation,useUpdateSlotMutation} = slotApi
+    export const {useGetSlotsQuery,useGetAvailableSlotsQuery,useAddSlotMutation,useDeleteSlotMutation,useUpdateSlotMutation} = slotApi

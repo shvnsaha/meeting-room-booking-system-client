@@ -1,38 +1,25 @@
-// src/components/FeaturedRooms.jsx
-import React from 'react';
+
+
 import { Link } from 'react-router-dom';
-import image from "../../assets/meeting.jpg"
+
 import Card from '../shared/Card';
-const rooms = [
-    {
-        id: 1,
-        name: 'Conference Room A',
-        capacity: '10 People',
-        price: '$100',
-        img: 'https://via.placeholder.com/300x200'
-    },
-    {
-        id: 2,
-        name: 'Meeting Room B',
-        capacity: '15 People',
-        price: '$150',
-        img: 'https://via.placeholder.com/300x200'
-    },
-    {
-        id: 3,
-        name: 'Workshop Room C',
-        capacity: '20 People',
-        price: '$200',
-        img: 'https://via.placeholder.com/300x200'
-    },
-];
+import { useGetRoomsQuery } from '../../redux/features/room/roomApi';
+import { TRoom } from '../../types/inde';
+
 
 const FeaturedRooms = () => {
+
+    const {data:rooms,isLoading} = useGetRoomsQuery(undefined)
+    if(isLoading){
+        return <p>Loading...</p>
+    }
+
+    console.log(rooms);
     return (
         <div className="container mx-auto py-12">
             <h2 className="text-2xl font-bold text-center mb-6">Featured Rooms</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {rooms.map((room) => (
+                {rooms?.data.map((room:TRoom) => (
                     <Card room={room}></Card>
                 ))}
             </div>

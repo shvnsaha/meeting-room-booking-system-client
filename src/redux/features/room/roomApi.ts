@@ -9,7 +9,7 @@ const roomApi = baseApi.injectEndpoints({
               }),
               providesTags:['room']
         }),
-        getSingleProduct: builder.query({
+        getSingleRoom: builder.query({
             query: (id) => ({
               url: `/rooms/${id}`,
               method: "GET",
@@ -50,4 +50,4 @@ const roomApi = baseApi.injectEndpoints({
     })
 
 
-    export const {useGetRoomsQuery,useGetSingleProductQuery,useAddRoomMutation,useDeleteRoomMutation,useUpdateRoomMutation} = roomApi
+    export const {useGetRoomsQuery,useGetSingleRoomQuery,useAddRoomMutation,useDeleteRoomMutation,useUpdateRoomMutation} = roomApi

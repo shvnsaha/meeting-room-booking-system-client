@@ -9,6 +9,9 @@ import Signup from "../pages/Signup";
 import DashboardLayout from "../layout/DashboardLayout";
 import Room from "../pages/Dashboard/Room";
 import Slot from "../pages/Dashboard/Slot";
+import RoomDetails from "../pages/RoomDetails";
+import PrivateRoute from "./PrivateRoute";
+import Booking from "../pages/Booking";
 
 
 const router = createBrowserRouter([
@@ -29,6 +32,14 @@ const router = createBrowserRouter([
                 path: "/contact-us",
                 element: <Contact />
             },
+            {
+                path: "/room/:id",
+                element: <PrivateRoute><RoomDetails /></PrivateRoute>,
+              },
+            {
+                path: "/book/:id",
+                element: <PrivateRoute><Booking /></PrivateRoute>,
+              },
         ],
     },
     {
@@ -47,6 +58,7 @@ const router = createBrowserRouter([
                 path: 'slot-management',
                 element: <Slot/>
             },
+           
         ]
     },
     {

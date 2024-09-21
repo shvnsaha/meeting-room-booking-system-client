@@ -2,10 +2,13 @@
 import { Link } from "react-router-dom";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import image from "../../assets/meeting.jpg"
+import { TRoom } from "../../types/inde";
 
 
 
-const Card = ({ room }:any) => {
+const Card = ({ room }:{room: TRoom}) => {
+
+    console.log(room);
 
     return (
 
@@ -41,26 +44,11 @@ const Card = ({ room }:any) => {
               '
                     ></div>
                 </div>
-                {/* <div className='font-semibold text-lg'>{product.name}</div>
-                <div className='flex justify-between items-center'>
-                    <div className='font-semibold text-xs text-violet-900'>{product.brand}</div>
-                    <div className='font-semibold text-xs text-violet-900'>{product.available_quantity} in stocks</div>
-                </div>
+                 <div className='font-semibold text-lg'>{room.name}</div>
+                 <p>Capacity : {room.capacity}</p>
+                 <p>Price : {room.pricePerSlot}</p>
 
-                <div className='flex items-center text-xs text-gray-700 justify-between'>
-                    <div className='flex items-center text-xs text-gray-700 gap-2'>
-                        <Ratings rating={product.rating}></Ratings>
-                        <span>({product.rating})</span>
-                    </div>
-
-
-                </div>
-
-                <div className='flex justify-between items-center'>
-                    <div className='font-semibold flex items-center text-orange-800'>{product?.price} BDT</div>
-                </div> */}
-
-                <Link to={"/"} className='btn btn-outline'>View Details <FaArrowTrendUp ></FaArrowTrendUp> </Link>
+                <Link to={`/room/${room._id}`} className='btn btn-outline'>View Details <FaArrowTrendUp ></FaArrowTrendUp> </Link>
             </div>
 
         </div>

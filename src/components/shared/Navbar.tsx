@@ -1,8 +1,8 @@
 import avatarImg from '../../assets/placeholder.jpg'
 import logo from '../../assets/logo.jpg'
 import { Link, NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../redux/hook';
-import { useCurrentUser } from '../../redux/features/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { logout, useCurrentUser } from '../../redux/features/auth/authSlice';
 
 
 
@@ -15,6 +15,8 @@ const Navbar = () => {
 
    
    const user = useAppSelector(useCurrentUser)
+   const dispatch = useAppDispatch()
+   
 
     const navItems = <>
         <li className='font-bold'><NavLink to={'/'}>Home</NavLink></li>
@@ -63,7 +65,7 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
                             {user  ? <> {user?.role === 'admin'? <li><Link to={'/dashboard'}>Dashboard</Link></li> : <li><Link to={'/dashboard/profile'}>Profile</Link></li>}
-                                <li><button >Logout</button></li>
+                                <li><button onClick={()=>dispatch(logout())}>Logout</button></li>
                             </> : <li><Link to={'/login'}>Login</Link></li> }
                         </ul>
                     </div>
