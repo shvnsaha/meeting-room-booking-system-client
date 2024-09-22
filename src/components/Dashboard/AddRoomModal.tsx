@@ -5,7 +5,8 @@ import Creatable from 'react-select/creatable'
 
 const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
     selectedOptions,
-    setSelectedOptions }: any) => {
+    setSelectedOptions, handleImageChange,
+    uploadButtonText, }: any) => {
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -52,7 +53,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                     required
                                                 />
                                             </div>
-                                          
+
 
                                             <div className="flex justify-between gap-2">
                                                 <div className="space-y-1 text-sm">
@@ -100,7 +101,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                 />
                                             </div>
 
-                                            <div className="space-y-1 text-sm">
+                                            {/* <div className="space-y-1 text-sm">
                                                 <input
                                                     className="w-full px-4 py-3 text-gray-800 border border-black-300 focus:outline-blue-500 rounded-md "
                                                     name="image"
@@ -109,28 +110,27 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                     placeholder="Image Url"
                                                     required
                                                 />
-                                            </div>
+                                            </div> */}
 
-                                            {/* <div className=" p-4 bg-white w-full  m-auto rounded-lg">
-                        <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
-                          <div className="flex flex-col w-max mx-auto text-center">
-                            <label>
-                              <input
-                                onChange={handleFileChange}
-                                className="text-sm cursor-pointer w-36 hidden"
-                                type="file"
-                                name="image"
-                                id="image"
-                                accept="image/*"
-                                hidden
-                              />
-                              <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
-                                {uploadButtonText}
-                              </div>
-                            </label>
-                          </div>
-                        </div>
-                      </div> */}
+                                            <div className=" p-4 bg-white w-full  m-auto rounded-lg">
+                                                <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
+                                                    <div className="flex flex-col w-max mx-auto text-center">
+                                                        <label>
+                                                             <input onChange={(e:any) => handleImageChange(e.target.files[0])}
+                                                                className="text-sm cursor-pointer w-36 hidden"
+                                                                type="file"
+                                                                name="image"
+                                                                id="image"
+                                                                accept="image/*"
+                                                                hidden
+                                                            />
+                                                            <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
+                                                                {uploadButtonText}
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div className="space-y-1 text-sm">
                                                 <label htmlFor="tags" className="block text-gray-600">
@@ -147,7 +147,7 @@ const AddRoomModal = ({ isOpen, closeModal, handleAddRoom, loading, options,
                                                 ></Creatable>
                                             </div>
 
-                                          
+
                                         </div>
 
                                         <button

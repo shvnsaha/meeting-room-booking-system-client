@@ -8,6 +8,7 @@ import { TRoom } from "../../types/inde";
 import { MdDeleteOutline, MdSystemUpdateAlt } from "react-icons/md";
 import Swal from "sweetalert2";
 import UpdateRoomModal from "../../components/Dashboard/UpdateRoomModal";
+import { imageUpload } from "../../utils/imageUpload";
 
 const Room = () => {
 
@@ -19,6 +20,7 @@ const Room = () => {
     const [room,setRoom] = useState<TRoom | null>(null)
     const [isOpen, setIsOpen] = useState(false)
     const [isOpen2, setIsOpen2] = useState(false)
+    const [uploadButtonText, setUploadButtonText] = useState('Upload Image')
 
     const [selectedOptions, setSelectedOptions] = useState([])
 
@@ -37,9 +39,10 @@ const Room = () => {
  
 
 
-    if (isLoading) {
-        <p>Loading</p>
-    }
+
+  const handleImageChange = (image:any) => {
+    setUploadButtonText(image.name)
+}
 
    
 
@@ -52,7 +55,8 @@ const Room = () => {
         e.preventDefault();
         const form = e.currentTarget;
         const name = form.room_name.value;
-        const image = form.image.value
+        const image = form.image.files[0];
+        const image_url = await imageUpload(image)
         const roomNo = parseInt(form.roomNo.value)
         const floorNo = parseInt(form.floorNo.value)
         const capacity = parseInt(form.capacity.value)
@@ -60,8 +64,10 @@ const Room = () => {
         const amenities = selectedValues
         const amenitiesObj = selectedOptions
         const roomData = {
-            name,image,roomNo,floorNo,capacity,pricePerSlot,amenities,amenitiesObj
+            name,image:image_url?.data?.display_url,roomNo,floorNo,capacity,pricePerSlot,amenities,amenitiesObj
         }
+
+        console.log(roomData);
 
   
 
@@ -143,6 +149,11 @@ const Room = () => {
             setIsOpen(false);
           }
 
+    }
+
+    
+    if (isLoading) {
+        <p>Loading</p>
     }
 
 
@@ -270,6 +281,8 @@ const Room = () => {
                  options={options}
                  selectedOptions={selectedOptions}
                  setSelectedOptions={setSelectedOptions}
+                 handleImageChange={handleImageChange}
+                 uploadButtonText={uploadButtonText}
              ></AddRoomModal>
                }
 
