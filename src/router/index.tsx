@@ -12,6 +12,8 @@ import Slot from "../pages/Dashboard/Slot";
 import RoomDetails from "../pages/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import Booking from "../pages/Booking";
+import PaymentSuccess from "../pages/PaymentSuccess";
+import Bookings from "../pages/Dashboard/Bookings";
 
 
 const router = createBrowserRouter([
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
                 path: "/book/:id",
                 element: <PrivateRoute><Booking /></PrivateRoute>,
               },
+            {
+                path: "/payment-success/:tranId",
+                element: <PrivateRoute><PaymentSuccess/></PrivateRoute>,
+              },
         ],
     },
     {
@@ -57,6 +63,10 @@ const router = createBrowserRouter([
             {
                 path: 'slot-management',
                 element: <Slot/>
+            },
+            {
+                path: 'booking-management',
+                element: <Bookings/>
             },
            
         ]
