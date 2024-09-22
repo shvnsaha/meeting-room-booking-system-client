@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import Booking from "../pages/Booking";
 import PaymentSuccess from "../pages/PaymentSuccess";
 import Bookings from "../pages/Dashboard/Bookings";
+import Rooms from "../pages/Rooms";
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: "/contact-us",
                 element: <Contact />
+            },
+            {
+                path: "/rooms",
+                element: <Rooms />
             },
             {
                 path: "/room/:id",
