@@ -5,27 +5,43 @@ import { Link } from 'react-router-dom';
 import Card from '../shared/Card';
 import { useGetRoomsQuery } from '../../redux/features/room/roomApi';
 import { TRoom } from '../../types/inde';
+import CardSkeleton from '../shared/CardSkeleton';
 
 
 const FeaturedRooms = () => {
 
-    const {data:rooms,isLoading} = useGetRoomsQuery(undefined)
-    if(isLoading){
-        return <p>Loading...</p>
+    const { data: rooms, isLoading } = useGetRoomsQuery(undefined)
+
+    if (isLoading) {
+        return (
+            <div className="overflow-hidden">
+
+                <div
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8"
+                    data-aos="fade-down"
+                    data-aos-delay="400"
+                >
+                    {Array.from({ length: 6 }, (_, index: number) => (
+                        <CardSkeleton key={index} />
+                    ))}
+                </div>
+            </div>
+        );
     }
 
-    console.log(rooms);
     return (
-        <div className="container mx-auto py-12">
+        <div className="container mx-auto ">
             <h2 className="text-2xl font-bold text-center mb-6">Featured Rooms</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {rooms?.data.map((room:TRoom) => (
+                {rooms?.data.slice(0, 3).map((room: TRoom) => (
                     <Card room={room}></Card>
                 ))}
             </div>
-            <Link to="/meeting-rooms" className="mt-8 inline-block bg-blue-500 text-white py-2 px-4 rounded-lg text-center hover:bg-blue-600 transition duration-300">
-                See More
-            </Link>
+            <div className="flex justify-center pt-6">
+                <Link to={"/product"} className="btn btn-outline">
+                    See More
+                </Link>
+            </div>
         </div>
     );
 };

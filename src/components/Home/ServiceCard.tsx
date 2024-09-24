@@ -25,11 +25,13 @@ const services = [
 
 const ServiceCard = () => {
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg">
+    <div className="p-6 bg-white rounded-lg shadow-lg overflow-hidden">
       <h2 className="text-2xl font-bold text-center mb-6">Our Highlighted Services</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((service, index) => (
-          <div key={index} className="flex items-start p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div key={index} className="flex  items-start p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"  data-aos="fade-left"
+          data-aos-delay="600"
+          data-aos-duration="1000">
             <div className="text-3xl mr-4">
               {service.icon}
             </div>

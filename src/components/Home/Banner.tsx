@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 import bannr from "../../assets/meeting.jpg"
 
 const Banner = () => {
   return (
-    <div className="relative w-full h-60 md:h-80 lg:h-96">
+    <div className="relative w-full h-60 md:h-80 lg:h-96 ">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
           src={bannr} 
           alt="Modern Workspace"
-          className="object-cover w-full h-full rounded-lg"
+          className="object-cover w-full h-full"
         />
       </div>
 
@@ -21,9 +22,9 @@ const Banner = () => {
           <p className="text-lg md:text-xl mb-4">
             Efficient, hassle-free room booking for all your meeting needs.
           </p>
-          <a href="/meeting-rooms" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
+          <Link to={'/rooms'} className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
             Book Now
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 
 import { Link } from "react-router-dom";
 import { FaArrowTrendUp } from "react-icons/fa6";
-import image from "../../assets/meeting.jpg"
 import { TRoom } from "../../types/inde";
 
 
@@ -33,7 +32,7 @@ const Card = ({ room }:{room: TRoom}) => {
                   group-hover:scale-110 
                   transition
                 '
-                        src={image}
+                        src={room.image}
                         alt='Room'
                     />
                     <div
@@ -46,7 +45,7 @@ const Card = ({ room }:{room: TRoom}) => {
                 </div>
                  <div className='font-semibold text-lg'>{room.name}</div>
                  <p>Capacity : {room.capacity}</p>
-                 <p>Price : {room.pricePerSlot}</p>
+                 <p>Price : {room.pricePerSlot} BDT</p>
 
                 <Link to={`/room/${room._id}`} className='btn btn-outline'>View Details <FaArrowTrendUp ></FaArrowTrendUp> </Link>
             </div>

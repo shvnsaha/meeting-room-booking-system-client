@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Helmet } from "react-helmet-async";
 import { useDeleteOrderMutation, useGetAllOrdersQuery, useUpdateOrderMutation } from "../../redux/features/order/orderApi";
-import { MdDeleteOutline, MdSystemUpdateAlt } from "react-icons/md";
+import { MdDeleteOutline } from "react-icons/md";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { GiConfirmed } from "react-icons/gi";

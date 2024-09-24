@@ -1,4 +1,4 @@
-import logo from '../../assets/logo.jpg'
+import logo from '../../assets/logo.png'
 const Footer = () => {
     return (
         <section className="py-10 mt-10 bg-gray-100 sm:pt-16 lg:pt-24 border border-b-2">
@@ -210,7 +210,7 @@ const Footer = () => {
           </div>
           <hr className="mt-16 mb-10 border-gray-200" />
           <p className="text-sm text-center text-gray-600">
-            © Copyright 2024, All Rights Reserved by Eshop
+            © Copyright 2024, All Rights Reserved by RoomHub
           </p>
         </div>
       </section>

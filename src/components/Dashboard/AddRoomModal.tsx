@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react'
 import { TbFidgetSpinner } from 'react-icons/tb';

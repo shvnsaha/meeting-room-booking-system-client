@@ -5,10 +5,13 @@ import { useGetRoomsQuery } from "../redux/features/room/roomApi";
 import Card from "../components/shared/Card";
 import { TRoom } from "../types/inde";
 import CardSkeleton from "../components/shared/CardSkeleton";
+import ScrollTop from "../hooks/useScrollToTop";
 
 
 
 const Rooms = () => {
+
+    ScrollTop()
 
     const [searchTerm, setSearchTerm] = useState("");
     const [sortPrice, setSortPrice] = useState("");
@@ -24,38 +27,37 @@ const Rooms = () => {
 
     const params = `searchTerm=${searchTerm}&sort=${sortPrice}&minPrice=${price[0]}&maxPrice=${price[1]}&minCapacity=${capacity[0]}&maxCapacity=${capacity[1]}`;
 
-   const {data,isLoading}= useGetRoomsQuery(params)
+    const { data, isLoading } = useGetRoomsQuery(params)
 
 
-   const handleClear = () =>{
-    setPrice([0,10000])
-    setCapacity([0,200])
-    setSortPrice("")
-    setSearchTerm("")
-  }
+    const handleClear = () => {
+        setPrice([0, 10000])
+        setCapacity([0, 200])
+        setSortPrice("")
+        setSearchTerm("")
+    }
 
     return (
-        <div className="px-4">
+        <div className="px-4" data-aos="fade-down"
+        data-aos-delay="600"
+        data-aos-duration="1000">
             <Helmet>
-                <title>E-Shop | Buy Your Products</title>
+                <title>Room Meeting | Buy Your Products</title>
             </Helmet>
 
             <div
                 className="banner h-52 bg-blend-overlay rounded-lg"
-                data-aos="fade-down"
-                data-aos-delay="400"
+                
             >
                 <h2
                     className=" text-2xl text-center ml-2 sm:ml-0 lg:text-5xl font-bold text-green-600 pt-10"
-                    data-aos="fade-down"
-                    data-aos-delay="400"
+                    
                 >
                     Find Your Desired Room
                 </h2>
                 <div
                     className="flex  justify-center pt-8 items-center"
-                    data-aos="fade-down"
-                    data-aos-delay="400"
+                  
                 >
                     <input
                         id="search"
@@ -70,8 +72,7 @@ const Rooms = () => {
 
             <div
                 className="bg-green-200 p-2 rounded-lg"
-                data-aos="fade-down"
-                data-aos-delay="400"
+               
             >
                 <div className="bg-white p-8 rounded-lg flex flex-col lg:flex-row justify-between gap-5 items-center">
                     <div>

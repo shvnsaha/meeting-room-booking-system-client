@@ -26,6 +26,7 @@
     "react-router-dom": "^6.26.2",
     "react-select": "^5.8.1",
     "react-slider": "^2.0.6",
+    "react-spinners": "^0.14.1",
     "redux-persist": "^6.0.0",
     "sweetalert2": "^11.14.0"
   },

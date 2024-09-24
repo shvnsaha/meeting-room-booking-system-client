@@ -2,34 +2,43 @@
 
 import { Link, useParams } from "react-router-dom";
 import { useGetSingleRoomQuery } from "../redux/features/room/roomApi";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import ScrollTop from "../hooks/useScrollToTop";
+import Loader from "../components/shared/Loader";
+import im2 from '../assets/room-image2.webp'
+import im3 from '../assets/room-image3.webp'
+import im4 from '../assets/room-image4.webp'
 
 const RoomDetails = () => {
+
+    ScrollTop();
     const { id } = useParams();
      const { data, isLoading } = useGetSingleRoomQuery(id);
+     const [images, setImages] = useState({});
+     const [activeImg, setActiveImg] = useState('')
 
-     
+     useEffect(() => {
+        if (data?.data) {
+            setImages({
+                img1: data.data.image,
+                img2: im2,
+                img3: im3,
+                img4: im4
+            });
+            setActiveImg(data.data.image);
+        }
+    }, [data]);
 
 
-    const [images, setImages] = useState({
-        img1: data?.data.image,
-        img2: "https://readymadeui.com/images/laptop2.webp",
-        img3: "https://readymadeui.com/images/laptop3.webp",
-        img4: "https://readymadeui.com/images/laptop4.webp"
-    })
-
-    const [activeImg, setActiveImg] = useState(images.img1)
-
-    const handleImageClick = (img) => {
+    const handleImageClick = (img:string) => {
         setActiveImg(img);
     };
 
    
 
-    if(isLoading){
-        return <p>Loadeee</p>
-    }
+    if(isLoading)
+        return <Loader></Loader>
+ 
 
     return (
         <div>
@@ -83,7 +92,7 @@ const RoomDetails = () => {
                         
                             <h1 className='text-xl md:text-3xl font-bold text-blue-500'>{data?.data.name}</h1>
                             {
-                                data.data.amenities.map((item: string)=><span className="text-xs font-semibold text-green-600"># {item}</span>)
+                                data.data.amenities.map((item: string,index:number)=><span key={index} className="text-xs font-semibold text-green-600"># {item}</span>)
                             }
                             <p className='font-semibold'>Room Number : {data?.data.roomNo}</p>
                             <p className='font-semibold'>Floor Number : {data?.data.roomNo}</p>

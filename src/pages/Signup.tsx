@@ -4,14 +4,12 @@ import { Helmet } from 'react-helmet-async';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import { useSignupMutation } from '../redux/features/auth/authApi';
-import { useAppDispatch } from '../redux/hook';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const Signup = () => {
 
     const [signup] = useSignupMutation()
-    const dispatch = useAppDispatch()
     const navigate = useNavigate();
 
     const [show, setShow] = useState(false);
@@ -34,7 +32,7 @@ const handleSignUp = async(e:any) =>{
 
     try {
         setLoader(true)
-        const res = await signup(userData).unwrap()
+        await signup(userData).unwrap()
         toast.success("Registration Successfull")
          navigate(`/login`)
         } catch (error:any) {

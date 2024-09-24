@@ -19,7 +19,8 @@ import { RootState } from '../store';
 // import { setUser } from '../features/auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api',
+    // baseUrl: 'http://localhost:5000/api',
+  baseUrl: 'https://meeting-room-booking-system-server.vercel.app/api',
   credentials:"include",
   prepareHeaders: (headers,{getState}) =>{
    const token = (getState() as RootState).auth.token

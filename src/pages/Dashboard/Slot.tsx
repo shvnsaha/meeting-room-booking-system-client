@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Helmet } from "react-helmet-async";
 import { useAddSlotMutation, useDeleteSlotMutation, useGetSlotsQuery, useUpdateSlotMutation } from "../../redux/features/slot/slotApi";
 import { useGetRoomsQuery } from "../../redux/features/room/roomApi";
@@ -198,7 +199,7 @@ const Slot = () => {
 
                                 {
 
-                                    data?.data.map((item, index) => <tr key={item._id}
+                                    data?.data.map((item:any, index:number) => <tr key={item._id}
                                     >
                                         <td
                                             scope='col'

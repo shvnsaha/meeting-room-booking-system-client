@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "../components/Home/Banner";
 import FeaturedRooms from "../components/Home/FeaturedRooms";
 import FeaturedSection from "../components/Home/FeaturedSection";
@@ -9,16 +10,19 @@ import Testimonials from "../components/Home/Testimonials";
 
 const Home = () => {
 
-    
-  
+
+
     return (
-        <div>
-            <Banner/>
-            <ServiceCard/>
-            <FeaturedRooms/>
-            <FeaturedSection/>
-            <HowItWorks/>
-            <Testimonials/>
+        <div className="space-y-8">
+            <Helmet>
+                <title>Meeting Room | Home</title>
+            </Helmet>
+            <Banner />
+            <ServiceCard />
+            <FeaturedRooms />
+            <FeaturedSection />
+            <HowItWorks />
+            <Testimonials />
         </div>
     );
 };

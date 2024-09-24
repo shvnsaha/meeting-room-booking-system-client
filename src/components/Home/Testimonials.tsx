@@ -59,13 +59,15 @@ const Testimonials = () => {
  
 
   return (
-    <div className="container mx-auto py-12">
+    <div className="container mx-auto overflow-hidden ">
       <h2 className="text-2xl font-bold text-center mb-6">What Our Customers Say</h2>
       {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> */}
 
       <Carousel responsive={responsive}>
         {testimonials.map((testimonial, index) => (
-          <div key={index} className="p-4 border rounded-lg shadow-md">
+          <div key={index} className="p-4 border rounded-lg bg-base-200 shadow-md" data-aos="fade-left"
+          data-aos-delay="600"
+          data-aos-duration="1000">
             <div className="flex items-center mb-4">
               <img src={testimonial.img} alt={testimonial.name} className="w-16 h-16 rounded-full mr-4" />
               <div>

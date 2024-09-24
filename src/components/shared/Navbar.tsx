@@ -1,5 +1,6 @@
 import avatarImg from '../../assets/placeholder.jpg'
-import logo from '../../assets/logo.jpg'
+import avatar from'../../assets/avatar.jpg'
+import logo from '../../assets/logo.png'
 import { Link, NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { logout, useCurrentUser } from '../../redux/features/auth/authSlice';
@@ -20,15 +21,14 @@ const Navbar = () => {
 
     const navItems = <>
         <li className='font-bold'><NavLink to={'/'}>Home</NavLink></li>
-        <li className='font-bold'><NavLink to={'/product'}>Products</NavLink></li>
+        <li className='font-bold'><NavLink to={'/rooms'}>Meeting Rooms</NavLink></li>
         <li className='font-bold'><NavLink to={'/about-us'}>About Us</NavLink></li>
         <li className='font-bold'><NavLink to={'/contact-us'}>Contact Us</NavLink></li>
-        <li className='font-bold'><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
     </>
 
     return (
        
-            <div className={`navbar lg:px-10`}>
+            <div className={`navbar bg-base-200 lg:px-10`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,7 +41,7 @@ const Navbar = () => {
 
 
                     <Link to={'/'} className='hidden md:block'>
-                        <img src={logo} className='h-14 rounded-full' />
+                        <img src={logo} className='h-10 rounded-full' />
                     </Link>
 
                     
@@ -59,12 +59,16 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={avatarImg} />
+                                {
+                                    user ?  <img alt="Tailwind CSS Navbar component" src={avatar} /> :
+                                    <img alt="Tailwind CSS Navbar component" src={avatarImg} />
+                                }
+                               
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-                            {user  ? <> {user?.role === 'admin'? <li><Link to={'/dashboard'}>Dashboard</Link></li> : <li><Link to={'/dashboard/profile'}>Profile</Link></li>}
+                            {user  ? <> {user?.role === 'admin'? <li><Link to={'/dashboard'}>Dashboard</Link></li> : <li><Link to={'/my-booking'}>My Booking</Link></li>}
                                 <li><button onClick={()=>dispatch(logout())}>Logout</button></li>
                             </> : <li><Link to={'/login'}>Login</Link></li> }
                         </ul>

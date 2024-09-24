@@ -1,9 +1,9 @@
-import React from 'react';
+
 
 const OurStory = () => {
   return (
     <section className="my-10 p-6 bg-white rounded-lg shadow-lg animate-fade-in">
-      <h2 className="text-4xl font-bold mb-4 text-center">Our Story</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center">Our Story</h2>
       <p className="text-lg text-gray-700 mb-4 text-center">
         Founded in 2020, we started as a small team with a shared vision to revolutionize the meeting room booking experience.
       </p>

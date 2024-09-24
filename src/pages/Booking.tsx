@@ -18,7 +18,7 @@ const Booking = () => {
     const [loading, setLoading] = useState(false)
     const [addOrder] = useAddOrderMutation()
     const userData = useAppSelector(useCurrentUserData)
-    const { data: room, isLoading } = useGetSingleRoomQuery(id);
+    const { data: room } = useGetSingleRoomQuery(id);
 
     const [date, setDate] = useState('2024-09-20');
     const [price, setPrice] = useState(0);
@@ -41,7 +41,7 @@ const Booking = () => {
 
 
     const selectedValues = selectedOptions.map((item: TOptions) => item.value)
-    const handleChange = (newValue: MultiValue<TOptions>, actionMeta: ActionMeta<TOptions>) => {
+    const handleChange = (newValue: MultiValue<TOptions>, _actionMeta: ActionMeta<TOptions>) => {
         setSelectedOptions(newValue as TOptions[]);
         setPrice(newValue.length * room?.data.pricePerSlot)
     };
@@ -50,7 +50,7 @@ const Booking = () => {
 
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
         const bookingData = {

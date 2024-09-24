@@ -30,7 +30,7 @@ const Login = () => {
         }
 
         try {
-            
+            setLoader(true)
            const res = await login(userInfo).unwrap()
            console.log(res);
            const user = verifyToken(res.token) as TUser
@@ -40,6 +40,8 @@ const Login = () => {
            } catch (error:any) {
             // toas.error(error.message,{id: toastId})
             console.log(error);
+           }finally{
+            setLoader(false)
            }
     }
     return (

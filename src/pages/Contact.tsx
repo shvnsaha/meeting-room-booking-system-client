@@ -1,14 +1,17 @@
+import { Helmet } from "react-helmet-async";
 import AuthInputBox from "../components/shared/AuthInputBox";
 
 
 const Contact = () => {
-    return (
-        <div className="p-10">
-        {/* <Helmet>
-          <title>E-Shop | Contact Us</title>
-          </Helmet> */}
-      <div data-aos="zoom-out-up" className=" max-w-3xl mx-auto text-center">
-        <h1 className="mb-2 text-3xl  text-green-600  font-bold">
+  return (
+    <div className="p-10">
+      <Helmet>
+        <title>Meeting Room | Contact Us</title>
+      </Helmet>
+      <div data-aos="fade-down"
+          data-aos-delay="600"
+          data-aos-duration="1000" className=" max-w-3xl mx-auto text-center">
+        <h1 className="mb-2 text-2xl  text-green-600  font-bold">
           Reach out to us!
         </h1>
         <p className="mb-3 text-lg leading-7 text-grey font-medium">
@@ -18,15 +21,18 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="flex gap-7 flex-col items-center md:flex-row">
-        <div className="grid grid-cols-1 gap-5 md:w-1/2 md:grid-cols-2">
+      <div className="flex gap-7 flex-col items-center md:flex-row" >
+        
+        <div className="grid grid-cols-1 gap-5 md:w-1/2 md:grid-cols-2" data-aos="fade-right"
+          data-aos-delay="600"
+          data-aos-duration="1000">
           <div data-aos="fade-up" className="crad_items  rounded-none">
-            <div className="card bg-green-100  mb-2   shadow-lg ">
+            <div className="card bg-green-100 hover:scale-105  mb-2   shadow-lg ">
               <figure className="text-6xl text-green-600  mt-14">
                 <i className="fa-light fa-location-dot"></i>
               </figure>
               <div className="card-body text-center">
-                <h2 className="text-head text-4xl text-green-600 font-bold capitalize">
+                <h2 className="text-head text-2xl text-green-600 font-bold capitalize">
                   adress
                 </h2>
                 <p className="text-lg   mt-2   text-grey font-light">
@@ -41,16 +47,16 @@ const Contact = () => {
           </div>
 
           <div data-aos="fade-up" className="crad_items  rounded-none">
-            <div className="card bg-green-100   mb-2   shadow-lg ">
+            <div className="card bg-base-200 hover:scale-105   mb-2   shadow-lg ">
               <figure className="text-6xl text-green-600 mt-14 ">
                 <i className="fa-light fa-phone-volume"></i>
               </figure>
               <div className="card-body text-center">
-                <h2 className="text-head text-4xl text-green-600 font-bold capitalize">
+                <h2 className="text-head text-2xl text-green-600 font-bold capitalize">
                   Call US
                 </h2>
                 <p className="text-lg  mt-2 font-light  text-grey ">
-                 00958696
+                  00958696
                 </p>
                 <p className="text-lg text-grey font-light">
                   69889-8757
@@ -61,12 +67,12 @@ const Contact = () => {
           </div>
 
           <div data-aos="fade-up" className="crad_items  rounded-none">
-            <div className="card bg-green-100   mb-2   shadow-lg ">
+            <div className="card bg-base-200 hover:scale-105   mb-2   shadow-lg ">
               <figure className="text-6xl text-green-600 mt-14 ">
                 <i className="fa-regular fa-envelope"></i>
               </figure>
               <div className="card-body text-center">
-                <h2 className="text-head text-4xl text-green-600 font-bold capitalize">
+                <h2 className="text-head text-2xl text-green-600 font-bold capitalize">
                   Mail us
                 </h2>
                 <p className="text-lg  mt-2  break-words  text-grey font-light">
@@ -81,12 +87,12 @@ const Contact = () => {
           </div>
 
           <div data-aos="fade-up" className="crad_items  rounded-none">
-            <div className="card bg-green-100   mb-2   shadow-lg ">
+            <div className="card bg-green-100 hover:scale-105   mb-2   shadow-lg ">
               <figure className="text-6xl text-green-600 mt-14 ">
                 <i className="fa-regular fa-headphones"></i>
               </figure>
               <div className="card-body text-center">
-                <h2 className="text-head text-4xl text-green-600 font-bold capitalize">
+                <h2 className="text-head text-2xl text-green-600 font-bold capitalize">
                   Helpline
                 </h2>
                 <p className="text-lg  mt-2   text-grey font-light">
@@ -102,7 +108,9 @@ const Contact = () => {
         </div>
 
         <div className="md:w-1/2">
-          <div data-aos="zoom-in-up" className="bg-green-100  p-10 rounded-lg">
+          <div data-aos="fade-left"
+          data-aos-delay="600"
+          data-aos-duration="1000" className="bg-orange-100  p-10 rounded-lg">
             <form
               className="flex flex-col gap-4 justify-between h-full"
             >
@@ -141,7 +149,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Contact;

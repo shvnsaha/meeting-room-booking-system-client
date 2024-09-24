@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Helmet } from "react-helmet-async";
 import { useAddRoomMutation, useDeleteRoomMutation, useGetRoomsQuery, useUpdateRoomMutation } from "../../redux/features/room/roomApi";
 import {   useState } from "react";
@@ -40,7 +41,7 @@ const Room = () => {
 
 
 
-  const handleImageChange = (image:any) => {
+  const handleImageChange = (image:File) => {
     setUploadButtonText(image.name)
 }
 
