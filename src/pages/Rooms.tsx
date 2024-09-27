@@ -42,7 +42,7 @@ const Rooms = () => {
         data-aos-delay="600"
         data-aos-duration="1000">
             <Helmet>
-                <title>Room Meeting | Buy Your Products</title>
+                <title>Room Meeting | Book your rooms</title>
             </Helmet>
 
             <div

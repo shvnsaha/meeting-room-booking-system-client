@@ -77,10 +77,10 @@ const RoomDetails = () => {
                                 {Object.values(images).map((img, index) => (
                                     <div key={index} className="rounded-xl p-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)]">
                                         <img
-                                            src={img}
+                                            src={img as string}
                                             alt="Product2"
                                             className="w-24 cursor-pointer"
-                                            onClick={() => handleImageClick(img)}
+                                            onClick={() => handleImageClick(img as string)}
                                         />
                                     </div>
                                 ))}

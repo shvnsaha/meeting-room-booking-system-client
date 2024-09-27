@@ -6,6 +6,7 @@ import { RootState } from "../../store";
 export type TUser = {
     email: string;
     role: string;
+    userId: string;
     iat: number;
     exp: number;
 }

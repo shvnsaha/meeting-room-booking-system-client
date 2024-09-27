@@ -1,84 +1,36 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Helmet } from "react-helmet-async";
-import { useDeleteOrderMutation, useGetAllOrdersQuery, useUpdateOrderMutation } from "../../redux/features/order/orderApi";
-import { MdDeleteOutline } from "react-icons/md";
-import Swal from "sweetalert2";
-import toast from "react-hot-toast";
-import { GiConfirmed } from "react-icons/gi";
-import { GrEject } from "react-icons/gr";
+import Loader from "../../components/shared/Loader";
+import { useGetUsersQuery, useUpdateUserRoleMutation } from "../../redux/features/user/userApi";
+import { useState } from "react";
 
+const Users = () => {
+    const { data, isLoading } = useGetUsersQuery(undefined)
+    const [updateRole] = useUpdateUserRoleMutation();
+    const [_loader,setLoader] = useState(false)
 
-
-const Bookings = () => {
-
-    const { data, isLoading } = useGetAllOrdersQuery(undefined)
-    const [deleteOrder] = useDeleteOrderMutation()
-    const [updateOrder] = useUpdateOrderMutation()
-
-    const handleDelete = (id: string) => {
-        Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-        }).then(async (result) => {
-          if (result.isConfirmed) {
-            await deleteOrder(id);
-    
-            Swal.fire({
-              title: "Booking is deleted",
-              text: "",
-              icon: "success",
-            });
-          }
-        });
-      };
-
-
-      const handleAccept = async(id: string) =>{
-        const orderData = {
-            isConfirmed: 'confirmed'
+    const handleRoleUpdate = async(id:string)=>{
+       try {
+        setLoader(true)
+        const userData = {
+            role: 'admin'
         }
+        const res = await updateRole({id,userData}).unwrap()
+        console.log(res);
+       } catch (error) {
+        console.log(error);
+       }finally{
+        setLoader(false)
+       }
+    }
 
-        try {
-            const res = await updateOrder( {id, orderData} ).unwrap();
-            console.log(res);
-            if (res?.success) {
-              toast.success(res?.message);
-            }
-          } catch (err: any) {
-            toast.error(err);
-          } 
-        
-      }
-
-      const handleReject = async(id: string) =>{
-        const orderData = {
-            isConfirmed: 'unconfirmed'
-        }
-
-        try {
-            const res = await updateOrder( {id, orderData} ).unwrap();
-            console.log(res);
-            if (res?.success) {
-              toast.success(res?.message);
-            }
-          } catch (err: any) {
-            toast.error(err);
-          } 
-        
-      }
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Loader />
     }
     return (
         <div className='container mx-auto px-4 sm:px-8'>
             <Helmet>
-                <title>Dashboard | All Bookings</title>
+                <title>Dashboard | All Users</title>
             </Helmet>
             <div className='py-8'>
 
@@ -97,39 +49,40 @@ const Bookings = () => {
                                         scope='col'
                                         className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-centertext-sm uppercase font-normal'
                                     >
-                                        Room Name
+                                         Name
                                     </th>
-                                    <th
-                                        scope='col'
-                                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
-                                    >
-                                        User Name
-                                    </th>
+
                                     <th
                                         scope='col'
                                         className='px-5 py-3 text-center bg-white  border-b border-gray-200 text-gray-800   text-sm uppercase font-normal'
                                     >
-                                        Date
+                                        Email
                                     </th>
                                     <th
                                         scope='col'
                                         className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
                                     >
-                                        TimeSlot
+                                        Phone
                                     </th>
                                     <th
                                         scope='col'
                                         className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
                                     >
-                                        Status
+                                        Address
                                     </th>
-
+                                    <th
+                                        scope='col'
+                                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
+                                    >
+                                        Role
+                                    </th>
                                     <th
                                         scope='col'
                                         className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
                                     >
                                         Action
                                     </th>
+
                                 </tr>
                             </thead>
                             <tbody>{/* Room row data */}
@@ -142,51 +95,44 @@ const Bookings = () => {
                                             scope='col'
                                             className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800 text-center text-sm uppercase font-normal'
                                         >
-                                            {index}
+                                            {index + 1}
                                         </td>
                                         <td
                                             scope='col'
                                             className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
                                         >
-                                            {item.room.name}
-                                        </td>
-                                        <td
-                                            scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-centertext-sm uppercase font-normal'
-                                        >
-                                            {item.user.name}
+                                            {item.name}
                                         </td>
                                         <td
                                             scope='col'
                                             className='px-5 py-3 text-center bg-white  border-b border-gray-200 text-gray-800   text-sm uppercase font-normal'
                                         >
-                                            {item.date}
+                                            {item.email}
                                         </td>
                                         <td scope='col'
                                             className='px-5 py-3 text-center bg-white  border-b border-gray-200 text-gray-800   text-sm uppercase font-normal'
                                         >
-                                            {item.slots.map((it:any, idx:number) => (
-                                                <p
-                                                    key={idx}
-                                                    className="text-gray-900 whitespace-no-wrap border-2 p-1"
-                                                >{`${idx + 1}.  ${it.startTime} - ${it.endTime}`}</p>
-                                            ))}
+                                            {item.phone}
                                         </td>
                                         <td
                                             scope='col'
                                             className='px-5 py-3 text-center bg-white  border-b border-gray-200 text-gray-800   text-sm uppercase font-normal'
                                         >
-                                            {item.isConfirmed}
+                                            {item.address}
                                         </td>
                                         <td
                                             scope='col'
-                                            className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
+                                            className='px-5 py-3 text-center bg-white  border-b border-gray-200 text-gray-800   text-sm uppercase font-normal'
                                         >
-                                            <div className="flex justify-evenly">
-                                                <button onClick={() => handleAccept(item?._id)} title="Accept" ><GiConfirmed /></button>
-                                                <button onClick={() => handleReject(item?._id)} title="Reject" ><GrEject /></button>
-                                                <button title="Delete" onClick={() => handleDelete(item._id)}><MdDeleteOutline /></button>
-                                            </div>
+                                            {item.role}
+                                        </td>
+                                        <td
+                                            scope='col'
+                                            className='px-5 py-3 text-center bg-white  border-b border-gray-200 text-gray-800   text-sm uppercase font-normal'
+                                        >
+                                           {
+                                            item.role=== 'user' && <button onClick={()=>handleRoleUpdate(item?._id)} className="btn btn-outline">Make Admin</button>
+                                           }
                                         </td>
                                     </tr>)
                                 }
@@ -201,4 +147,4 @@ const Bookings = () => {
     );
 };
 
-export default Bookings;
+export default Users;

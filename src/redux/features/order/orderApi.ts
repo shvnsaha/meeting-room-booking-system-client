@@ -40,8 +40,18 @@ const orderApi = baseApi.injectEndpoints({
           },
           invalidatesTags: ['order'],
         }),
+
+        getAllMyOrders: builder.query({
+          query: () => ({
+              method: 'GET',
+              url: `/my-bookings`,
+            }),
+            providesTags:['order']
+      }),
+
+
         })
     })
 
 
-  export  const {useAddOrderMutation,useGetAllOrdersQuery,useDeleteOrderMutation,useUpdateOrderMutation} = orderApi
+  export  const {useAddOrderMutation,useGetAllOrdersQuery,useDeleteOrderMutation,useUpdateOrderMutation,useGetAllMyOrdersQuery} = orderApi

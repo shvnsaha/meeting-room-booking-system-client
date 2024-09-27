@@ -16,6 +16,7 @@ import PaymentSuccess from "../pages/PaymentSuccess";
 import Bookings from "../pages/Dashboard/Bookings";
 import Rooms from "../pages/Rooms";
 import MyBooking from "../pages/MyBooking";
+import Users from "../pages/Dashboard/Users";
 
 
 const router = createBrowserRouter([
@@ -63,8 +64,8 @@ const router = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
             {
-                path: 'dashboard',
-                element: "hello",
+                path: '/dashboard',
+                element: <Users/>,
             },
             {
                 path: 'room-management',

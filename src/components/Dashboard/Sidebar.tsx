@@ -2,12 +2,10 @@
 import { useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GrLogout } from "react-icons/gr";
-import { FcSettings } from "react-icons/fc";
-import { FaUsersGear } from "react-icons/fa6";
-import { MdLibraryBooks } from "react-icons/md";
+import { FaArrowUpRightFromSquare, FaUsersGear } from "react-icons/fa6";
 import { AiOutlineBars } from "react-icons/ai";
-import { FaHome, FaBook, FaClipboardList } from "react-icons/fa";
 import logo from "../../assets/logo2.png";
+import { MdOutlineMapsHomeWork, MdOutlineMoreTime } from "react-icons/md";
 
 
 const Sidebar = () => {
@@ -90,38 +88,26 @@ const Sidebar = () => {
           <nav className="space-y-2 mt-4">
             <SidebarLink
               to="/dashboard"
-              icon={<FaHome />}
+              icon={<FaUsersGear />}
               label="Dashboard"
               currentPath={currentPath}
             />
             <SidebarLink
               to="/dashboard/room-management"
-              icon={<FaBook />}
+              icon={<MdOutlineMapsHomeWork />}
               label="Room management"
               currentPath={currentPath}
             />
             <SidebarLink
-              to="/admin-dashboard/all-bookings"
-              icon={<FaClipboardList />}
-              label="All Bookings"
+              to="/dashboard/slot-management"
+              icon={<MdOutlineMoreTime />}
+              label="Slot Management"
               currentPath={currentPath}
             />
             <SidebarLink
-              to="/admin-dashboard/all-users"
-              icon={<FaUsersGear />}
-              label="All Users"
-              currentPath={currentPath}
-            />
-            <SidebarLink
-              to="/admin-dashboard/books-providers"
-              icon={<MdLibraryBooks />}
-              label="Books Providers"
-              currentPath={currentPath}
-            />
-            <SidebarLink
-              to="/admin-dashboard/users-to-update"
-              icon={<FcSettings />}
-              label="Users to Update"
+              to="/dashboard/booking-management"
+              icon={<FaArrowUpRightFromSquare />}
+              label="Booking Management"
               currentPath={currentPath}
             />
           </nav>

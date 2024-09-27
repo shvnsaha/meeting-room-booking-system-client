@@ -4,7 +4,7 @@ import AuthInputBox from "../components/shared/AuthInputBox";
 
 const Contact = () => {
   return (
-    <div className="p-10">
+    <div className="p-10 overflow-hidden">
       <Helmet>
         <title>Meeting Room | Contact Us</title>
       </Helmet>

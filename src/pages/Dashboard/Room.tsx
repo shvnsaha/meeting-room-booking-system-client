@@ -161,7 +161,7 @@ const Room = () => {
     return (
         <div className='container mx-auto px-4 sm:px-8'>
             <Helmet>
-                <title>E-Shop | All Bookings</title>
+                <title>Dashboard | Rooms</title>
             </Helmet>
             <div className='py-8'>
                 <div className="flex justify-end">
