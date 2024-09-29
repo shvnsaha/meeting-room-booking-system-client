@@ -95,8 +95,8 @@ const RoomDetails = () => {
                                 data.data.amenities.map((item: string,index:number)=><span key={index} className="text-xs font-semibold text-green-600"># {item}</span>)
                             }
                             <p className='font-semibold'>Room Number : {data?.data.roomNo}</p>
-                            <p className='font-semibold'>Floor Number : {data?.data.roomNo}</p>
-                            <p className='font-semibold'>Capacity : {data?.data.roomNo} Peoples</p>
+                            <p className='font-semibold'>Floor Number : {data?.data.floorNo}</p>
+                            <p className='font-semibold'>Capacity : {data?.data.capacity} Peoples</p>
                             <p className='font-semibold'>Price : {data?.data.pricePerSlot} BDT</p>
                             <p className='text-gray-700'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam placeat, numquam impedit eaque officia minus consequatur aliquid facere temporibus porro magni quia pariatur nisi minima! Adipisci qui delectus cumque accusantium!</p>  
                             <Link to={`/book/${data.data._id}`} className="btn btn-outline">Book Now</Link>    
