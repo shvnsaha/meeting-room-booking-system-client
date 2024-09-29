@@ -10,6 +10,7 @@ import { MdDeleteOutline, MdSystemUpdateAlt } from "react-icons/md";
 import Swal from "sweetalert2";
 import UpdateRoomModal from "../../components/Dashboard/UpdateRoomModal";
 import { imageUpload } from "../../utils/imageUpload";
+import Loader from "../../components/shared/Loader";
 
 const Room = () => {
 
@@ -33,6 +34,7 @@ const Room = () => {
     { value: 'technology', label: 'Technology' },
     { value: 'entertainment', label: 'Entertainment' },
     { value: 'education', label: 'Education' },
+    { value: 'coding', label: 'Coding' },
   ]
 
   const selectedValues = selectedOptions.map((item:TOptions) => item.value)
@@ -154,7 +156,7 @@ const Room = () => {
 
     
     if (isLoading) {
-        <p>Loading</p>
+        return <Loader/>
     }
 
 
@@ -229,7 +231,7 @@ const Room = () => {
                                         scope='col'
                                         className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800 text-center text-sm uppercase font-normal'
                                     >
-                                        {index}
+                                        {index+1}
                                     </td>
                                     <td
                                         scope='col'
@@ -239,7 +241,7 @@ const Room = () => {
                                     </td>
                                     <td
                                         scope='col'
-                                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-centertext-sm uppercase font-normal'
+                                        className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-center text-sm uppercase font-normal'
                                     >
                                         {item.roomNo}
                                     </td>

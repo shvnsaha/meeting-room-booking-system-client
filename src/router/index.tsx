@@ -17,6 +17,7 @@ import Bookings from "../pages/Dashboard/Bookings";
 import Rooms from "../pages/Rooms";
 import MyBooking from "../pages/MyBooking";
 import Users from "../pages/Dashboard/Users";
+import AdminRoute from "./AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -61,23 +62,23 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: <PrivateRoute><AdminRoute><DashboardLayout /></AdminRoute></PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
-                element: <Users/>,
+                element: <PrivateRoute><AdminRoute><Users/></AdminRoute></PrivateRoute>,
             },
             {
                 path: 'room-management',
-                element: <Room/>
+                element: <PrivateRoute><AdminRoute><Room/></AdminRoute></PrivateRoute>
             },
             {
                 path: 'slot-management',
-                element: <Slot/>
+                element: <PrivateRoute><AdminRoute><Slot/></AdminRoute></PrivateRoute>
             },
             {
                 path: 'booking-management',
-                element: <Bookings/>
+                element: <PrivateRoute><AdminRoute><Bookings/></AdminRoute></PrivateRoute>
             },
            
         ]

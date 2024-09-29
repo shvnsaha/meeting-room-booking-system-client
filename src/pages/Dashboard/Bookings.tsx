@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { GiConfirmed } from "react-icons/gi";
 import { GrEject } from "react-icons/gr";
+import Loader from "../../components/shared/Loader";
 
 
 
@@ -73,7 +74,7 @@ const Bookings = () => {
       }
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Loader/>
     }
     return (
         <div className='container mx-auto px-4 sm:px-8'>

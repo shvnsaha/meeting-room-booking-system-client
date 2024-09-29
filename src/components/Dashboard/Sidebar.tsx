@@ -89,7 +89,7 @@ const Sidebar = () => {
             <SidebarLink
               to="/dashboard"
               icon={<FaUsersGear />}
-              label="Dashboard"
+              label="Users Management"
               currentPath={currentPath}
             />
             <SidebarLink

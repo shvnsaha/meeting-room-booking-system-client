@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { MdDeleteOutline, MdSystemUpdateAlt } from "react-icons/md";
 import { TSlot } from "../../types/inde";
 import UpdateSlotModal from "../../components/Dashboard/UpdateSlotModal";
+import Loader from "../../components/shared/Loader";
 
 
 
@@ -24,9 +25,7 @@ const Slot = () => {
      const [isOpen2, setIsOpen2] = useState(false)
     const [loading, setLoading] = useState(false)
     const [slot,setSlot] = useState<TSlot|null>(null)
-    if (isLoading) {
-        <p>Loading...</p>
-    }
+   
 
     function closeModal() {
         setIsOpen(false)
@@ -127,6 +126,10 @@ const Slot = () => {
       }
 
 
+      if (isLoading) {
+       return <Loader/>
+    }
+
    
     return (
         <div className='container mx-auto px-4 sm:px-8'>
@@ -205,7 +208,7 @@ const Slot = () => {
                                             scope='col'
                                             className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800 text-center text-sm uppercase font-normal'
                                         >
-                                            {index}
+                                            {index+1}
                                         </td>
                                         <td
                                             scope='col'
