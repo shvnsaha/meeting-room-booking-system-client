@@ -6,13 +6,13 @@ import { useAppDispatch } from "../redux/hook";
 import { verifyToken } from "../types/verifyToken";
 import { setUser, TUser } from "../redux/features/auth/authSlice";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 
 const Login = () => {
 
     const location = useLocation();
-
-    console.log(location);
+    
     const [login] = useLoginMutation()
     const dispatch = useAppDispatch()
     const navigate = useNavigate();
@@ -37,8 +37,10 @@ const Login = () => {
            dispatch(setUser({user:user,token: res.token,userData: res.data}))
         
           navigate(location?.state || "/")
+          toast.success('Login successful')
            } catch (error:any) {
             // toas.error(error.message,{id: toastId})
+            toast.error(error?.data?.message)
             console.log(error);
            }finally{
             setLoader(false)
@@ -70,7 +72,7 @@ const Login = () => {
                                     id="email"
                                     required
                                     placeholder="Enter Your Email Here"
-                                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900"
                                     data-temp-mail-org="0"
                                 />
                             </div>
@@ -87,7 +89,7 @@ const Login = () => {
                                     id="password"
                                     required
                                     placeholder="*******"
-                                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900"
                                 />
                             </div>
                         </div>
@@ -95,7 +97,7 @@ const Login = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="bg-rose-500 w-full rounded-md py-3 text-white"
+                                className="bg-blue-500 w-full rounded-md py-3 text-white"
                             >
                                 {loader ? (
                                     <TbFidgetSpinner className="animate-spin m-auto" />
@@ -106,21 +108,8 @@ const Login = () => {
                             </button>
                         </div>
                     </form>
-                    <div className="space-y-1">
-                        <button
-                            className="text-xs hover:underline hover:text-rose-500 text-gray-400"
-                            // onClick={() => setIsOpen(true)}
-                        >
-                            Forgot password?
-                        </button>
-                    </div>
-                    <div className="flex items-center pt-4 space-x-1">
-                        <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-                        <p className="px-3 text-sm dark:text-gray-400">
-                            Login with social accounts
-                        </p>
-                        <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-                    </div>
+                 
+                    
                     <p className="px-6 text-sm text-center text-gray-400">
                         Don&apos;t have an account yet?{" "}
                         <Link

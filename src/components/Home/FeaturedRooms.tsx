@@ -38,7 +38,7 @@ const FeaturedRooms = () => {
                 ))}
             </div>
             <div className="flex justify-center pt-6">
-                <Link to={"/product"} className="btn btn-outline">
+                <Link to={"/rooms"} className="btn btn-outline">
                     See More
                 </Link>
             </div>

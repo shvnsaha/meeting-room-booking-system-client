@@ -54,7 +54,7 @@ const RoomDetails = () => {
                                     <img
                                         src={activeImg}
                                         alt="Product"
-                                        className="max-h-96  rounded object-cover hover:scale-105 duration-500 transition-transform"
+                                        className="h-96 w-full rounded object-cover hover:scale-105 duration-500 transition-transform"
                                     />
                                 </div>
                                 <button type="button" className="absolute top-4 right-4">

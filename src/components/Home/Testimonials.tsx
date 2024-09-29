@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import avatar from '../../assets/avatar.jpg'
 
 
 const responsive = {
@@ -69,7 +70,7 @@ const Testimonials = () => {
           data-aos-delay="600"
           data-aos-duration="1000">
             <div className="flex items-center mb-4">
-              <img src={testimonial.img} alt={testimonial.name} className="w-16 h-16 rounded-full mr-4" />
+              <img src={avatar} alt={testimonial.name} className="w-16 h-16 rounded-full mr-4" />
               <div>
                 <h3 className="font-semibold">{testimonial.name}</h3>
                 <p className="text-sm text-gray-500">{testimonial.role}</p>
