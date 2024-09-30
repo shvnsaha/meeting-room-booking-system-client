@@ -10,7 +10,7 @@ This project is a **RoomHub** designed to offer a smooth experience for browsing
 
 ### Public Pages
 
-- **Home Page**: Includes a hero section with a prominent "Book Now" button, car availability search, featured cars, customer testimonials, and a footer.
+- **Home Page**: Includes a hero section with a prominent "Book Now" button, room availability search, featured rooms, customer testimonials, and a footer.
 - **Meeting Room page Page**: Displays all available rooms in a grid or list view with filtering options based on room type, price, and other relevant features.
 - **Room Details Page**: Shows detailed information about selected room with booking options.
 - **About Us Page**: Contains the company's history, team, fleet, values, and contact information.
@@ -28,7 +28,7 @@ This project is a **RoomHub** designed to offer a smooth experience for browsing
 
 ### Payout Solution
 
-- **Payment Integration**: Secure payment processing after car return using Stripe payment methods.
+- **Payment Integration**: Secure payment processing  using amar pay payment methods.
 
 ## Technologies Used
 
