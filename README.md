@@ -1,93 +1,86 @@
-The Meeting Room Booking System is designed to provide a seamless and intuitive experience for users booking meeting rooms in co-working spaces. It offers user-friendly design, secure processes, and robust management tools for both regular users and administrators.
+# RoomHub -Room Booking  System
 
-Table of Contents
-Features
-Technologies Used
-Installation
-Usage
-API Endpoints
-Contributing
-License
-Features
-Public Pages
-Homepage
+## Overview
 
-Attractive hero section with a CTA.
-Service advertisement and featured rooms.
-Customer testimonials.
-About Us
+This project is a **RoomHub** designed to offer a smooth experience for browsing, booking, and managing rooms. The system includes both customer and admin functionalities, providing a user-friendly interface for room booking services, while allowing administrators to manage inventory and reservations efficiently.
 
-Mission statement, team bios, and company story.
-Contact Us
+## Live Server - https://meeting-room-booking-system-client-steel.vercel.app/
 
-Contact information and a user-friendly contact form.
-Error Pages
+## Features
 
-Custom 404 page with navigation options.
-User Authentication
+### Public Pages
 
-Sign up and login functionalities with role-based access.
-Meeting Rooms Page
+- **Home Page**: Includes a hero section with a prominent "Book Now" button, car availability search, featured cars, customer testimonials, and a footer.
+- **Meeting Room page Page**: Displays all available rooms in a grid or list view with filtering options based on room type, price, and other relevant features.
+- **Room Details Page**: Shows detailed information about selected room with booking options.
+- **About Us Page**: Contains the company's history, team, fleet, values, and contact information.
+- **Error Page**: Custom 404 page and backend error handling.
+- **User Authentication**: Sign up, login, with real-time validation and error handling.
 
-Search, filter, and sort options for room listings.
-User Pages (Private)
-Room Details Page
+### User Pages
 
-Detailed room information with booking options.
-Booking Process
+- **User Dashboard**: Manage personal information, view booking history, and handle payment.
+- **Booking Management**: View, modify, or cancel existing bookings (with conditions).
 
-Calendar view for date selection and user information form.
-Confirmation and Payment Page
+### Admin Pages
 
-Booking summary, payment options, and confirmation modal.
-My Bookings Page
+- **Admin Dashboard**: Manage rooms, bookings, users, and reports. Admins can block/activate users and promote users to admins.
 
-List of user bookings with status.
-Admin Pages (Private)
-Admin Dashboard
-Room management and booking management features.
-Bonus Features
-Debounce API calls for improved search performance.
-Micro-animations for enhanced user experience.
-Secure payment integration with AmarPay/SSLCOMMERCE/Stripe.
-"Scroll to Top" button for easy navigation.
-Technologies Used
-Frontend: React, CSS/SCSS, HTML
-Backend: Node.js, Express.js
-Database: MongoDB
-Payment Integration: AmarPay/SSLCOMMERCE/Stripe
-Installation
-Clone the repository
+### Payout Solution
 
-bash
-Copy code
-git clone https://github.com/yourusername/meeting-room-booking-system.git
-cd meeting-room-booking-system
-Install dependencies
+- **Payment Integration**: Secure payment processing after car return using Stripe payment methods.
 
-bash
-Copy code
-npm install
-Set up the environment variables
+## Technologies Used
 
-Create a .env file in the root directory and add your database connection string and payment gateway keys.
-Run the application
+- **Frontend**: React, TypeScript, Zod,  Tailwind CSS, HeadlessUi and more.
+- **Backend**: Node.js, Express, TypeScript, Mongoose, Bcrypt, Moment, Zod and more.
+- **Database**: MongoDB
+- **Authentication**: JWT
+- **Payment Integration**: Stripe
+- **State Management**: Redux
+- **Deployment**: Hosted on Vercel
 
-bash
-Copy code
-npm start
-Usage
-Visit the homepage to start booking meeting rooms.
-Sign up or log in to access user-specific features.
-Admins can log in to manage rooms and bookings.
-API Endpoints
-POST /api/users/signup: Create a new user account.
-POST /api/users/login: Authenticate user and provide a token.
-GET /api/rooms: Retrieve a list of meeting rooms.
-POST /api/bookings: Create a new booking.
-Contributing
-Fork the repository.
-Create a new branch (git checkout -b feature/YourFeature).
-Make your changes and commit (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/YourFeature).
-Open a pull request.
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/shvnsaha/meeting-room-booking-system-client.git
+   ```
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+### Project Structure
+
+```bash
+/src
+│
+├── components
+│ ├── Admin
+│ ├── User
+│ ├── Booking
+│ └── Shared
+├── pages
+│ ├── Home.tsx
+│ ├── Rooms.tsx
+│ ├── RoomDetails.tsx
+│ ├── AboutUs.tsx
+│ ├── UserDashboard.tsx
+│ ├── AdminDashboard.tsx
+│ └── Error.tsx
+├── assets
+│ └── images
+├── services
+│ └── api.ts
+├── utils
+│ └── helpers.ts
+└── App.tsx
+```
